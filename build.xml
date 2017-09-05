@@ -1,0 +1,64 @@
+<project name="Virtusa POC" default="describeMetadata" basedir="." xmlns:sf="antlib:com.salesforce">
+	<property file="build.properties"/>
+	<property environment="env"/>
+	
+	<!-- Describe Metadata -->
+	<target name="describeMetadata">
+		<sf:describeMetadata
+		username="${dev.username}"
+		password="${dev.password}"
+		sessionId="${dev.sessionId}"
+		serverurl="${dev.serverurl}"
+		resultFilePath="describe.log"/>
+	</target>
+	
+	<!-- Retrieve an unpackaged set of metadata from your org -->
+	<!-- The file unpackaged/package.xml lists what is to be retrieved -->
+	
+	
+	<target name="test">
+	  <mkdir dir="retrieveUnpackaged"/>
+	  <!-- Retrieve the contents into another directory -->
+	  <sf:retrieve username="${Sandbox1.username}" password="${Sandbox1.password}" serverurl="${sfSandbox.serverurl}" retrieveTarget="retrieveUnpackaged" unpackaged="src/package.xml" unzip="false" />
+	</target>
+	
+	<target name="Deploy">
+	<sf:deploy
+			username="${Sandbox2.username}"
+			password="${Sandbox2.password}"
+			serverurl="${sfSandbox.serverurl}"
+			deployRoot="${Sandbox2.retrieveTarget}"
+			runAllTests="true" />
+  </target>
+  <target name="retrieve">
+	  <sf:retrieve username="${Sandbox1.username}"
+				   password="${Sandbox1.password}"
+				   serverurl="${sfSandbox.serverurl}"
+				   retrieveTarget="${Sandbox1.retrieveTarget}"
+				   unpackaged="${Sandbox1.unpackaged}"/>
+        <echo message="Commiting all changes with message ${gt.commitMessage}" />
+		<git command="add" dir="${Sandbox1.gitDirectory}">
+			<args>
+				<arg value="." />
+			</args>
+		</git>
+		<git command="commit" dir="${Sandbox1.gitDirectory}">
+			<args>
+				<arg value="-am ${gt.commitMessage}" />
+			</args>
+		</git>
+	</target>
+	<macrodef name="git">
+		<attribute name="command" />
+		<attribute name="dir" />
+		<element name="args" optional="true" />
+		<sequential>
+            <echo message="Executing Command in folder @{dir}" />
+            <echo message="git @{command}" />
+			<exec executable="git" dir="@{dir}">
+				<arg value="@{command}" />
+				<args/>
+			</exec>
+		</sequential>
+	</macrodef>
+</project>
