@@ -12,8 +12,8 @@
 		/>
 	</target>
 	
-	<!-- Retrieve an unpackaged set of metadata from your org-->
-	<!-- The file unpackaged/package.xml lists what is to be retrieved -->
+	<!-- Retrieve an unpackaged set of metadata from your dev org-->
+	<!-- The file src/package.xml lists what is to be retrieved -->
 	<target name="retrievelocal">
 	  	<mkdir dir="retrieveUnpackaged"/> <!-- Retrieve the contents into retrieveUnpackaged directory -->
 	  	<sf:retrieve 
@@ -26,6 +26,8 @@
 	  />
 	</target>
 	
+	<!-- Retrieve an unpackaged set of metadata from your git branch-->
+	<!-- The file src/package.xml lists what is to be retrieved -->
 	<target name="retrieveGit">
 	  	<mkdir dir="retrieveUnpackagedFromGit"/>
 		  <sf:retrieve username="${dev.username}"
@@ -33,8 +35,9 @@
 					   serverurl="${serverurl}"
 					   retrieveTarget="retrieveUnpackagedFromGit"
 					   unpackaged="src/package.xml"/>
-	        <echo message="Retrieving all changes with message ${gt.commitMessage}" />
-			<git command="add" dir="${Sandbox1.gitDirectory}">
+	        <echo message="Retrieving all changes from git develop branch"/>
+			<git-clone-pull repository="https://sixstringsin@github.com/sixstringsin/Milestones-PM.git" dest="ojunit"/>
+			<!--<git command="add" dir="${Sandbox1.gitDirectory}">
 				<args>
 					<arg value="." />
 				</args>
@@ -43,19 +46,26 @@
 				<args>
 					<arg value="-am ${gt.commitMessage}" />
 				</args>
-			</git>
-		</target>
+			</git>-->
+	</target>
+	
+	<target name="jenkinsdeploy">
+	      <sf:deploy 
+	      	username="${master.username}" 
+	      	password="${master.password}" 
+	      	serverurl="${serverurl}" 
+	      	deployRoot="."
+	      	runAllTests="true" />
+	</target>
 	
 	<target name="deploy">
 	<sf:deploy
-			username="${Sandbox2.username}"
-			password="${Sandbox2.password}"
-			serverurl="${sfSandbox.serverurl}"
-			deployRoot="${Sandbox2.retrieveTarget}"
+			username="${master.username}"
+			password="${master.password}"
+			serverurl="${serverurl}"
+			deployRoot="retrieveUnpackaged"
 			runAllTests="true" />
   </target>
-
-  
 	<macrodef name="git">
 		<attribute name="command" />
 		<attribute name="dir" />
@@ -64,9 +74,23 @@
             <echo message="Executing Command in folder @{dir}" />
             <echo message="git @{command}" />
 			<exec executable="git" dir="@{dir}">
-				<arg value="@{command}" />
+				<arg value="@{command}"/>
 				<args/>
 			</exec>
 		</sequential>
+	</macrodef>
+	<macrodef name = "git-clone-pull">
+	    <attribute name = "repository" />
+	    <attribute name = "dest" />
+	    <sequential>
+	        <git command = "clone -b">
+	            <args>
+	            	<arg value = "@{branch}" />
+	                <arg value = "@{repository}" />
+	                <arg value = "@{dest}" />
+	            </args>
+	        </git>
+	        <git command = "pull" dir = "@{dest}" />
+	    </sequential>
 	</macrodef>
 </project>
