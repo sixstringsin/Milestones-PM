@@ -28,10 +28,12 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 <apex:page contenttype="text/xml" 
   	standardController="Milestone1_Milestone__c" 
 	extensions="Milestone1_TimelineCon" 
-	action="{!init}" ><data wiki-section="Timeline">
+	action="{!init}" >
+<data wiki-section="Timeline"/>
 <apex:repeat value="{!allEvents}" var="e" >
-<event start="{!e.start}" title="{!e.title}"  {!e.endattribute} link="{!e.link}"  icon="{!e.icon}" isDuration="{!e.DurationEvent}" classname="{!e.classname}">
 <apex:outputText value="{!e.description}" />
-</event>
+<!--event start="{!e.start}" title="{!e.title}"  {!e.endattribute} link="{!e.link}"  icon="{!e.icon}" isDuration="{!e.DurationEvent}" classname="{!e.classname}">
+</event-->
 </apex:repeat> 
-</data></apex:page>
+</data>
+</apex:page>
