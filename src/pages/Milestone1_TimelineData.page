@@ -31,7 +31,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 	action="{!init}" ><data wiki-section="Timeline">
 <apex:repeat value="{!allEvents}" var="e" >
 <event start="{!e.start}" title="{!e.title}"  {!e.endattribute} link="{!e.link}"  icon="{!e.icon}"
-isDuration="{!e.DurationEvent}" classname="{!e.classname}" >
+isDuration="{!e.DurationEvent}" classname="{!e.classname}" />
 <apex:outputText value="{!e.description}" />
 </event>
 </apex:repeat> 
