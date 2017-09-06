@@ -54,7 +54,7 @@
 	      	username="${master.username}" 
 	      	password="${master.password}" 
 	      	serverurl="${serverurl}" 
-	      	deployRoot="."
+	      	deployRoot="./src"
 	      	runAllTests="true" />
 	</target>
 	
