@@ -1106,7 +1106,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Next Steps</shortDescription>
-        <value>Next Steps 2</value>
+        <value>Next Steps</value>
     </labels>
     <labels>
         <fullName>Milestone1_NoImportXMLFilesSelected</fullName>
@@ -1869,7 +1869,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Next Steps</shortDescription>
-        <value>Next Steps</value>
+        <value>Next Steps 9_5 6.31</value>
     </labels>
     <labels>
         <fullName>NoImportXMLFilesSelected</fullName>
