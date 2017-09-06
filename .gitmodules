@@ -1,0 +1,3 @@
+[submodule "sharedcomponents"]
+	path = sharedcomponents
+	url = https://sixstringsin@github.com/sixstringsin/Milestones-PM.git
