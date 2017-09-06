@@ -1,7 +1,7 @@
 Welcome to Milestones PM
 ========================
 
-Milestones PM is a lightweight task and project manager for Force.com.
+Milestones PM is a lightweight task and project manager for Force.com. 
 
 This repo contains all code, including long running tests that aren't in the package.
 
