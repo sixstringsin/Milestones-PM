@@ -25,6 +25,7 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
 OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
+<!--testing-->
 <apex:page controller="Milestone1_repeatCon" id="thePage" showHeader="true" sidebar="true">
 <!-- Bug # 59;  Modified Date:04-17-2012; Owner:Persistent; Comments: CSS that has been refered could change at anytime and break the app,so need to upload as a static resource. -->
 <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Resource_Bundle, 'stylesheets/homeCalendar.css')}" />
