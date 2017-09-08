@@ -2,6 +2,15 @@
 	<property file="build.properties"/>
 	<property environment="env"/>
 	
+	<target name="jenkinsdeploy">
+		      <sf:deploy 
+		      	username="${prod.username}" 
+		      	password="${prod.password}" 
+		      	serverurl="${serverurl}" 
+		      	deployRoot="./src"
+		      	runAllTests="true" />
+		</target>
+	
 	<!-- Describe Metadata -->
 	<target name="describeMetadata">
 		<sf:describeMetadata
@@ -47,15 +56,6 @@
 					<arg value="-am ${gt.commitMessage}" />
 				</args>
 			</git>-->
-	</target>
-	
-	<target name="jenkinsdeploy">
-	      <sf:deploy 
-	      	username="${master.username}" 
-	      	password="${master.password}" 
-	      	serverurl="${serverurl}" 
-	      	deployRoot="./src"
-	      	runAllTests="true" />
 	</target>
 	
 	<target name="deploy">
