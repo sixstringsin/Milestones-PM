@@ -1,12 +1,22 @@
-<project name="Virtusa POC" default="describeMetadata" basedir="." xmlns:sf="antlib:com.salesforce">
+<project name="RT sandbox | Release Branch" default="describeMetadata" basedir="." xmlns:sf="antlib:com.salesforce">
 	<property file="build.properties"/>
 	<property environment="env"/>
+
+	<target name="jenkinsdeploy">
+	      <sf:deploy 
+	      	username="${master.username}" 
+	      	password="${master.password}" 
+	      	serverurl="${serverurl}" 
+	      	deployRoot="./src"
+	      	runAllTests="true" />
+	</target>
 	
+	<!--*******Please ignore the tags below********-->
 	<!-- Describe Metadata -->
 	<target name="describeMetadata">
 		<sf:describeMetadata
-			username="${prod.username}"
-			password="${prod.password}"
+			username="${rt.username}"
+			password="${rt.password}"
 			serverurl="${serverurl}"
 			resultFilePath="describe.log"
 		/>
@@ -47,15 +57,6 @@
 					<arg value="-am ${gt.commitMessage}" />
 				</args>
 			</git>-->
-	</target>
-	
-	<target name="jenkinsdeploy">
-	      <sf:deploy 
-	      	username="${master.username}" 
-	      	password="${master.password}" 
-	      	serverurl="${serverurl}" 
-	      	deployRoot="./src"
-	      	runAllTests="true" />
 	</target>
 	
 	<target name="deploy">
