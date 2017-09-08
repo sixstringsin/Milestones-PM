@@ -2,6 +2,19 @@
 	<property file="build.properties"/>
 	<property environment="env"/>
 	
+	
+	<target name="jenkinsdeploy">
+	      <sf:deploy 
+	      	username="${st.username}" 
+	      	password="${st.password}" 
+	      	serverurl="${serverurl}" 
+	      	deployRoot="./src"
+	      	runAllTests="true" />
+	</target>
+	
+	<!--**********Please ignore the rest of this file during demo*************-->
+	
+	
 	<!-- Describe Metadata -->
 	<target name="describeMetadata">
 		<sf:describeMetadata
@@ -49,19 +62,10 @@
 			</git>-->
 	</target>
 	
-	<target name="jenkinsdeploy">
-	      <sf:deploy 
-	      	username="${master.username}" 
-	      	password="${master.password}" 
-	      	serverurl="${serverurl}" 
-	      	deployRoot="./src"
-	      	runAllTests="true" />
-	</target>
-	
 	<target name="deploy">
 	<sf:deploy
-			username="${master.username}"
-			password="${master.password}"
+			username="${st.username}"
+			password="${st.password}"
 			serverurl="${serverurl}"
 			deployRoot="retrieveUnpackaged"
 			runAllTests="true" />
