@@ -2,3 +2,4 @@
 [submodule "sharedlib"]
 	path = sharedlib
 	url = https://github.com/sixstringsin/milestones-pm-shared.git
+	branch = develop
