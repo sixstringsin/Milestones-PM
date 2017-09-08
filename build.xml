@@ -5,8 +5,8 @@
 	<!-- Describe Metadata -->
 	<target name="describeMetadata">
 		<sf:describeMetadata
-			username="${dev.username}"
-			password="${dev.password}"
+			username="${prod.username}"
+			password="${prod.password}"
 			serverurl="${serverurl}"
 			resultFilePath="describe.log"
 		/>
