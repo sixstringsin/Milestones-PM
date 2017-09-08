@@ -1,5 +1,4 @@
 
 [submodule "sharedlib"]
 	path = sharedlib
-	branch = develop
-	url = https://github.com/sixstringsin/milestones-pm-shared.git
+	url = https://github.com/sixstringsin/milestones-pm-shared.git#develop
