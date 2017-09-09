@@ -4,8 +4,8 @@
 	
 	<target name="jenkinsdeploy">
 		      <sf:deploy 
-		      	username="${prod.username}" 
-		      	password="${prod.password}" 
+		      	username="${dev.username}" 
+		      	password="${dev.password}" 
 		      	serverurl="${serverurl}" 
 		      	deployRoot="./src"
 		      	runAllTests="true" />
