@@ -34,7 +34,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
     <apex:outputPanel id="mainpanel"> 
      <apex:outputPanel id="stepmain" rendered="{!settingsReady == false}">
     
-    <h2>My {!$Label.NextSteps}</h2>
+    <h2>Feature change 4_28{!$Label.NextSteps}</h2>
     
     
     <p>{!$Label.YourNextFewSteps}</p>
