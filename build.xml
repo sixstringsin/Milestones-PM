@@ -12,9 +12,6 @@
 	</target>
 	
 	<!--**********Please ignore the rest of this file during demo*************-->
-	
-	
->>>>>>> refs/remotes/origin/develop
 	<!-- Describe Metadata -->
 	<target name="describeMetadata">
 		<sf:describeMetadata
