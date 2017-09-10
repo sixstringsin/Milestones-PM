@@ -1,4 +1,4 @@
-<project name="Virtusa POC" default="describeMetadata" basedir="." xmlns:sf="antlib:com.salesforce">
+<project name="Production Sandbox" default="describeMetadata" basedir="." xmlns:sf="antlib:com.salesforce">
 	<property file="build.properties"/>
 	<property environment="env"/>
 	
